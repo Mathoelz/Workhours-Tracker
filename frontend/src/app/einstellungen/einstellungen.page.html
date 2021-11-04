@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Einstellungen</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button
+        color="medium"
+        text
+        defaultHref="tabs/profil"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="user != undefined">
+
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <img [src]="this.imageUrl ? this.imageUrl : this.profileImage">
+    </ion-avatar>
+    <ion-label>
+      <h1 id="profile-name">{{ this.user.name }}</h1>
+      <p>Besitzer</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-list no-border>
+    <ion-list-header>Allgemeines</ion-list-header>
+    <ion-item></ion-item>
+    <!-- ion-item>
+      <ion-icon
+        name="settings"
+        slot="start"></ion-icon>
+      <ion-label>Sprache</ion-label>
+      <ion-select
+        [interfaceOptions]="customPopoverOptions"
+        interface="popover"
+        placeholder="{{user1.language}}"
+        [(ngModel)]="woche">
+        <ion-select-option *ngFor="let language of languages">{{language}}</ion-select-option>
+      </ion-select>
+    </ion-item -->
+    <!-- ion-item>
+      <ion-label class="label">Benachrichtigungen ausschalten</ion-label>
+      <ion-icon
+        name="notifications"
+        slot="start"></ion-icon>
+      <ion-toggle
+        [(ngModel)]="enableNotifications"
+        (click)="toggleNotifications()"></ion-toggle>
+    </ion-item -->
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>Accountverwaltung</ion-list-header>
+    <ion-item>
+      <ion-icon
+        name="power"
+        slot="start"></ion-icon>
+      <ion-button
+        (click)="logOutAlert()"
+        slot="end">
+        Logout
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-button
+    (click)="deleteUserAlert()"
+    expand="block"
+    fill="solid"
+    color="danger"
+    mode="ios">
+    Account löschen
+  </ion-button>
+</ion-content>

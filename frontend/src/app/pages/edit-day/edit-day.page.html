@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Eintrag bearbeiten</ion-title>
+    <ion-buttons slot="start">
+      <ion-button
+        color="medium"
+        (click)="dismissPopUp()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Datum:</ion-label>
+    <ion-datetime
+      display-format="DD.MM.YYYY"
+      [(ngModel)]="day"
+      done-text="Bestätigen"
+      cancel-Text="Abbrechen">
+    </ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Anfangszeit:</ion-label>
+    <ion-datetime
+      display-format="HH:mm"
+      [(ngModel)]="start"
+      done-text="Bestätigen"
+      cancel-Text="Abbrechen">
+    </ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Pause:</ion-label>
+    <ion-datetime
+      display-format="mm"
+      [(ngModel)]="break"
+      done-text="Bestätigen"
+      cancel-Text="Abbrechen">
+    </ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Endzeit:</ion-label>
+    <ion-datetime
+      display-format="HH:mm"
+      [(ngModel)]="end"
+      done-text="Bestätigen"
+      cancel-Text="Abbrechen">
+    </ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Fahrtzeit:</ion-label>
+    <ion-datetime
+      display-format="mm"
+      [(ngModel)]="driven"
+      done-text="Bestätigen"
+      cancel-Text="Abbrechen">
+    </ion-datetime>
+  </ion-item>
+
+  <!-- Buttons Block -->
+  <div text-center>
+    <!-- Abbrechen Button -->
+    <ion-button
+      (click)="dismissPopUp()"
+      shape="round"
+      fill="solid"
+      color="danger"
+      mode="ios">
+      Abbrechen
+    </ion-button>
+    <!-- Speichern Button -->
+    <ion-button
+      shape="round"
+      fill="solid"
+      color="success"
+      mode="ios"
+      (click)="updateWorkhours()">
+      Aktualisieren
+    </ion-button>
+  </div>
+
+</ion-content>

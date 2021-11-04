@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="large">WorkHours Tracker</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+
+  <div id="background"></div>
+  <p align="center">
+    <ion-img
+      id="logo"
+      src="/assets/icon/WorkHours_Tracker_Icon.png"></ion-img></p>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          expand="block"
+          type="submit"
+          fill="solid"
+          color="primary"
+          mode="ios"
+          (click)="login()">
+          Anmelden
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button
+          expand="block"
+          type="submit"
+          fill="solid"
+          color="danger"
+          (click)="register()"
+          mode="ios">
+          Registrieren
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

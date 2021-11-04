@@ -1,0 +1,7 @@
+{
+  "name": "loginTut",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

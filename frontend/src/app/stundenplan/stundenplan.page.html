@@ -1,0 +1,86 @@
+<ion-header *ngIf="user != undefined"> 
+  <ion-toolbar color="default">
+    <ion-title>Arbeitsstunden</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button
+        item-end
+        (click)="addEntry()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="user != undefined">
+  <!-- Pull to Refresh -->
+  <ion-refresher
+    slot="fixed"
+    (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="welcome-header">
+    <div class="content">
+      <div class="title">Aktueller Monat</div>
+      <ion-button
+        ion-item
+        color="secondary"
+        mode="ios">
+        <ion-datetime
+          max="2099"
+          display-format="MMMM/YYYY"
+          [(ngModel)]="current"
+          (ionChange)="refreshPage()"
+          monthNames="Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember"
+          done-text="Bestätigen"
+          cancel-Text="Abbrechen">
+        </ion-datetime>
+      </ion-button>
+    </div>
+
+    <button
+      (click)="refreshPage()"
+      ion-fab
+      color="dark"
+      class="refresh">
+      <ion-icon
+        class="iconSize"
+        name="md-refresh"></ion-icon>
+    </button>
+  </div>
+
+  <div
+    class="body"
+    padding>
+    <div class="currencies">
+      <ion-label>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Tag</ion-col>
+            <ion-col>Arbeitszeit</ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label>
+
+      <ion-row
+        class="currency"
+        *ngFor="let day of month">
+        <ion-col class="text">
+          <p class="name">{{ day.day.split(' ', 1).join(' ') | date: 'dd/MM'}}</p>
+        </ion-col>
+        <ion-col class="text">
+          <p class="usd">{{ day.hours }}</p>
+        </ion-col>
+        <ion-col col-1>
+          <span class="indicator">
+          <ion-icon
+              name="information-circle-outline"
+              (click)="presentInfoAlert(day)"></ion-icon></span>
+        </ion-col>
+      </ion-row>
+
+    </div>
+  </div>
+
+</ion-content>

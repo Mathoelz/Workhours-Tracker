@@ -1,0 +1,111 @@
+<ion-header *ngIf="user != undefined">
+  <ion-toolbar color="default">
+    <ion-title>Heute</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="user != undefined">
+  <ion-refresher
+    slot="fixed"
+    (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="welcome-header">
+    <div class="content">
+      <div class="title">Aktueller Tag</div>
+      <div class="title">{{ today }}</div>
+    </div>
+    <button
+      (click)="refreshPage()"
+      ion-fab
+      color="dark"
+      class="refresh">
+      <ion-icon
+        class="iconSize"
+        name="md-refresh"></ion-icon>
+    </button>
+  </div>
+
+  <div
+    class="body"
+    padding
+    *ngIf="todayIsExists == undefined">
+    <div class="currencies">
+      <h3 class="no-entry-exists">Sie haben keinen Eintrag zum heutigen Tag</h3>
+      <ion-button
+        expand="block"
+        (click)="eintragHinzufuegen()"
+        routerDirection="root"
+        fill="outline"
+        color="secondary"
+        mode="ios">
+        Eintrag hinzufügen
+      </ion-button>
+    </div>
+  </div>
+
+  <div
+    class="body"
+    padding
+    *ngIf="todayIsExists != undefined">
+    <div class="currencies">
+      <ion-item class="currency">
+        <ion-label class="labeltext">Anfangszeit:</ion-label>
+        <ion-datetime
+          #startPicker
+          class="currency"
+          display-format="HH:mm"
+          placeholder="{{todayIsExists.start}}"
+          (ionChange)="updateStartTime(startPicker.value)"
+          done-text="Bestätigen"
+          cancel-Text="Abbrechen">
+        </ion-datetime>
+      </ion-item>
+    </div>
+    <div class="currencies">
+      <ion-item class="currency">
+        <ion-label class="labeltext">Pause:</ion-label>
+        <ion-datetime
+          #breakPicker
+          class="currency"
+          display-format="mm"
+          placeholder="{{todayIsExists.break}}"
+          (ionChange)="updateBreakTime(breakPicker.value)"
+          done-text="Bestätigen"
+          cancel-Text="Abbrechen">
+        </ion-datetime>
+      </ion-item>
+    </div>
+    <div class="currencies">
+      <ion-item class="currency">
+        <ion-label class="labeltext">Endzeit:</ion-label>
+        <ion-datetime
+          #endPicker
+          class="currency"
+          display-format="HH:mm"
+          placeholder="{{todayIsExists.end}}"
+          (ionChange)="updateEndTime(endPicker.value)"
+          done-text="Bestätigen"
+          cancel-Text="Abbrechen">
+        </ion-datetime>
+      </ion-item>
+    </div>
+    <div class="currencies">
+      <ion-item class="currency">
+        <ion-label class="labeltext">Fahrtzeit:</ion-label>
+        <ion-datetime
+          #drivenPicker
+          class="currency"
+          display-format="mm"
+          placeholder="{{todayIsExists.driven}}"
+          (ionChange)="updateDrivenTime(drivenPicker.value)"
+          [(ngModel)]="driven"
+          done-text="Bestätigen"
+          cancel-Text="Abbrechen">
+        </ion-datetime>
+      </ion-item>
+    </div>
+  </div>
+
+</ion-content>

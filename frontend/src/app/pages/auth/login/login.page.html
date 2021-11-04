@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons end>
+      <ion-button
+        color="medium"
+        routerDirection="root"
+        (click)="dismissLogin()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Anmelden</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div id="background"></div>
+  <form
+    #form="ngForm"
+    (ngSubmit)="login(form)"
+    method="post">
+
+    <ion-item color="none">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input
+        ngModel
+        color="dark"
+        type="email"
+        name="email"></ion-input>
+    </ion-item>
+
+    <ion-item color="none">
+      <ion-label position="floating">Passwort</ion-label>
+      <ion-input
+        ngModel
+        color="dark"
+        type="password"
+        name="password"></ion-input>
+    </ion-item>
+
+    <p text-right></p>
+
+    <ion-button
+      expand="block"
+      type="submit"
+      fill="solid"
+      color="primary"
+      mode="ios">
+      Anmelden
+    </ion-button>
+  </form>
+  <p text-center>Noch kein Benutzerkonto?</p>
+  <ion-button
+    expand="block"
+    type="submit"
+    fill="solid"
+    color="danger"
+    mode="ios"
+    (click)="registerModal()">
+    Registrieren
+  </ion-button>
+</ion-content>

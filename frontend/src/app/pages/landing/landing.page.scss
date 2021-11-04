@@ -1,0 +1,21 @@
+#logo {
+    position:absolute;
+    left: 0;
+    right: 0;
+    margin:0 auto;
+    top:50%;
+    transform:translateY(-50%);
+  }
+
+  #background {
+    position: absolute;
+    background: linear-gradient(135deg, #8b7fe0, #f75f9d);
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-color: transparent;
+  }

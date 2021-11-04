@@ -1,0 +1,110 @@
+<ion-header *ngIf="user != undefined">
+  <ion-toolbar color="default">
+    <ion-title>Profil</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button
+        [routerLink]="['/einstellungen']"
+        routerDirection="root">
+        <ion-icon name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+  *ngIf="user != undefined"
+  padding
+  class="transparent-header">
+  <!-- Pull to Refresh -->
+  <ion-refresher
+    slot="fixed"
+    (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div id="profile-bg"></div>
+  <div id="content">
+    <div
+      id="profile-info"
+      padding>
+      <img
+        (click)="selectImage()"
+        id="profile-image"
+        [src]="profileImage"
+        [hidden]="croppedImagepath">
+      <img
+        (click)="selectImage()"
+        id="profile-image"
+        [src]="croppedImagepath"
+        [hidden]="!croppedImagepath">
+      <h3 id="profile-name">{{user.name}}</h3>
+      <ion-button
+        expand="block"
+        (click)="profil_bearbeiten()"
+        routerDirection="root"
+        fill="outline"
+        color="secondary"
+        mode="ios">
+        Profil bearbeiten...
+      </ion-button>
+
+      <ion-card *ngIf="user != undefined">
+        <ion-card-header>Persönliche Informationen</ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <!-- Language select test -->
+            <!-- ion-item>
+                <ion-label>Select Language</ion-label>
+                <ion-select
+                  placeholder="Select One"
+                  [(ngModel)]="selectedLanguage"
+                  (ionChange)="languageChanged()">
+                  <ion-select-option value="de">Deutsch</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <p>• {{ 'HOME.text' | translate:params }}</p>
+                </ion-label>
+              </ion-item -->
+            <ion-item>
+              <ion-label>
+                <p>• Monatsziel (Std.): {{ this.user.monthTarget }}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label >
+                <!-- Progressbar with 50 percent -->
+                <p id="fortschr">• Fortschr.: {{this.progress}}%</p>
+              </ion-label>
+              <ion-label>
+                <ion-progress-bar
+                  color="success"
+                  buffer="0.5"
+                  value="{{getTargetProgress()}}"
+                  mode="ios"></ion-progress-bar>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <p>• Arbeitsstunden (Std.): {{ this.user.workingHoursTillNow }}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <p>• Arbeitstage bis jetzt: {{  this.user.workingDaysTillNow }}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <p>• Bis jetzt verdient (Brutto): {{  this.user.grossSalary }}€</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+
+    </div>
+  </div>
+
+</ion-content>

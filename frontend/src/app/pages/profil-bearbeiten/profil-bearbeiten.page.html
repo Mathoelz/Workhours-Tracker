@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profil bearbeiten</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/profil"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngIf="user != undefined">
+    <ion-item>
+      <ion-label position="fixed">Name</ion-label>
+      <ion-input
+        id="nameInput"
+        placeholder="Name"
+        value="{{ user.name }}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fakultät</ion-label>
+      <ion-select
+        id="facultySelect"
+        value="{{ user.faculty }}"
+        [interfaceOptions]="customPopoverOptions"
+        interface="popover">
+        <ion-select-option>{{ user.faculty }}</ion-select-option>
+        <ion-select-option>Black</ion-select-option>
+        <ion-select-option>Red</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Studiengang</ion-label>
+      <ion-select
+        id="studysubjectSelect"
+        [interfaceOptions]="customPopoverOptions"
+        interface="popover"
+        value="{{user.studysubject}}">
+        <ion-select-option>{{ user.studysubject }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Abschluss</ion-label>
+      <ion-select
+        id="degreeSelect"
+        [interfaceOptions]="customPopoverOptions"
+        interface="popover"
+        value="{{user.degree}}">
+        <ion-select-option>{{ user.degree }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Semester</ion-label>
+      <ion-select
+        id="semesterSelect"
+        [interfaceOptions]="customPopoverOptions"
+        interface="popover"
+        value="{{user.semestercount}}">
+        <ion-select-option *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">{{item}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div>
+    <ion-button
+      [routerLink]="['/tabs/profil']"
+      routerDirection="root"
+      shape="round"
+      fill="solid"
+      color="danger"
+      mode="ios">
+      Abbrechen
+    </ion-button>
+    <ion-button
+      shape="round"
+      fill="solid"
+      color="success"
+      mode="ios"
+      (click)="optionsFn()">
+      Speichern
+    </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,111 @@
+#tab {
+  width: 40px;
+}
+
+p {
+  margin: 0;
+}
+
+/*ion-icon {
+  font-size: 25px; //Preferred size here
+}*/
+
+.welcome-header {
+  position: relative;
+  background: linear-gradient(135deg, #8b7fe0, #f75f9d);
+  width: 100%;
+  padding: 30px 0;
+  margin-bottom: 20px;
+
+  .refresh {
+    position: absolute;
+    right: 25px;
+    background-color: #D581A2;
+    box-shadow: 0px 0px 5px #5b6a89;
+
+    display: block;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 0;
+    box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
+  }
+
+  .content {
+    text-align: center;
+    padding: 20px;
+    color: white;
+
+    img {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      font-weight: 400;
+      text-align: center;
+    }
+  }
+
+  // Refresh Icon
+  .iconSize {
+    font-size: 25px;
+  }
+}
+
+.body {
+  .currencies {
+    .currency {
+      background: linear-gradient(45deg, #5e6d8c, #384662);
+      padding: 10px;
+      border-radius: 10px;
+      margin: 10px auto;
+
+      .image {
+        text-align: left;
+
+        img {
+          width: 50px;
+          margin: 0;
+          display: block;
+        }
+      }
+
+      .text {
+        .name {
+          color: #bcc6d4;
+          font-size: 15px;
+          font-weight: 700;
+        }
+
+        .rank {
+          color: #8b9bbd;
+          font-size: 15px;
+          font-weight: 500;
+        }
+
+        .usd {
+          color: #ffffff;
+          font-size: 15px;
+          font-weight: 700;
+        }
+      }
+
+      .indicator {
+        position: absolute;
+        top: 50%;
+        margin-top: -7px;
+        right: 0;
+        color: rgba(236, 236, 236, 0.3);
+      }
+    }
+  }
+}
